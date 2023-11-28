@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restaurant Reservation Form</title>
+  <link rel="stylesheet" href="forms.css">
+</head>
+<body>
+
+  <h1>Hotel Kingsbay</h1>
+  <h3>Reserve your table!</h3>
+
+  <form id="reservationForm">
+  <div class="form-row">
+    <div class="form-group">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required><br>
+    </div>
+    <div class="form-group">
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" required><br>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required><br>
+    </div>
+    <div class="form-group">
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time" required><br>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group">
+    <label for="people">People:</label>
+    <input type="number" id="people" name="people" required><br>
+    </div>
+  </div>
+    <div class="form-submit">
+    <input type="submit" value="Submit Reservation">
+    </div>
+  </form>
+
+  <table id="reservationTable">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>People</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script>
+    document.getElementById('reservationForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+
+      // Get form values
+      var name = document.getElementById('name').value;
+      var phone = document.getElementById('phone').value;
+      var date = document.getElementById('date').value;
+      var time = document.getElementById('time').value;
+      var people = document.getElementById('people').value;
+
+      // Add data to the table
+      var table = document.getElementById('reservationTable').getElementsByTagName('tbody')[0];
+      var newRow = table.insertRow(table.rows.length);
+      var cell1 = newRow.insertCell(0);
+      var cell2 = newRow.insertCell(1);
+      var cell3 = newRow.insertCell(2);
+      var cell4 = newRow.insertCell(3);
+      var cell5 = newRow.insertCell(4);
+      cell1.innerHTML = name;
+      cell2.innerHTML = phone;
+      cell3.innerHTML = date;
+      cell4.innerHTML = time;
+      cell5.innerHTML = people;
+
+      // Clear form fields after submission
+      document.getElementById('reservationForm').reset();
+    });
+  </script>
+
+</body>
+</html>
